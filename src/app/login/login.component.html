@@ -1,0 +1,42 @@
+<mat-toolbar color="accent">
+  <span>Auth App</span>
+</mat-toolbar>
+
+<mat-card class="center"  >
+  <h4>Login</h4>
+  <form [formGroup]="loginForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <mat-form-field floatLabel="never" style="width: 100%">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" formControlName="username" />
+          <mat-error *ngIf="loginForm.controls['username'].invalid">
+            {{ getLoginError("username") }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field floatLabel="never" style="width: 100%">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-error *ngIf="loginForm.controls['password'].invalid">
+            {{ getLoginError("password") }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col-lg-12" style="width: 100%">
+      <button
+        mat-flat-button
+        class="btn-block"
+        (click)="login(loginForm.value)"
+          color="primary"
+        style="margin-top: 16px"
+      >
+        Sign in
+      </button>
+    </div>
+  </form>
+  <mat-error [hidden]="!logincheck">Login Error Occures</mat-error>
+</mat-card>
